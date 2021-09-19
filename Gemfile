@@ -66,4 +66,4 @@ gem 'groupdate'
 
 gem 'faker'
 
-#gem 'jquery'
+gem 'jquery'
