@@ -1,5 +1,5 @@
 {
-  "name": "Marcadores",
+  "name": "marcadores",
   "private": true,
   "dependencies": {
     "chartkick": "^4.0.5",
