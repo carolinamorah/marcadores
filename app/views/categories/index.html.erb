@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-start">
+    <div class="m-0">  
+      <%= link_to new_category_path, {remote: true, class: "btn btn-danger text-left", id: "anadir-bookmark-btn"}  do %>
+        <span class="fas fa-plus-square" ></span>
+      <% end %>
+    </div>
+    <h1 class="h3 mx-5 text-gray-800 text-center">Categories</h1>
+  </div>
+</div>
+
+<div class="card m-2">
+  <table class="table border-secondary">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Marker</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <%= render 'categories/category', category: category %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'modal_category' %>

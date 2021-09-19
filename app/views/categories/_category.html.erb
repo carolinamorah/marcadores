@@ -1,0 +1,17 @@
+<tr id="category_<%= category.id %>">
+    <td><%= category.name %></td>
+    <td><%= category.status_boolean %></td>
+    <td>
+        <%= if category.parent
+                category.parent.name 
+            else 
+                'No tiene categoria padre'
+            end 
+        %>
+    </td>
+    <td><%= link_to 'Show', category, id:"showButton",class: "btn btn-light btn-sm",  remote: true%></td>
+    <td><%= link_to 'Edit', edit_category_path(category), id:"editButton", class:"btn btn-secondary btn-sm", remote: true%></td>
+    <td><%= link_to category, method: :delete, data: { confirm: 'Are you sure?' }, id:"deleteButton", class: "btn btn-danger btn-sm", remote: true do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %></td>
+</tr>

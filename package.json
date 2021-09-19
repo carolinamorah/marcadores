@@ -1,0 +1,8 @@
+{
+  "name": "Marcadores",
+  "private": true,
+  "dependencies": {
+    "chartkick": "^4.0.5",
+    "jquery": "^3.6.0"
+  }
+}

@@ -1,0 +1,8 @@
+// Add the dialog title
+$('#modal-bookmarks-title').html("Nuevo Marcador");
+ 
+// Render the new form
+$('#modal-body-bookmarks').html('<%= j render 'bookmarks/form', bookmark: @bookmark %>');
+ 
+// Show the dynamic dialog
+$('#modalBookmark').modal("show");
