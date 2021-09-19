@@ -65,3 +65,5 @@ gem 'chartkick'
 gem 'groupdate'
 
 gem 'faker'
+
+gem 'jquery'
