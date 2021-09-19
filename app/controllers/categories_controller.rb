@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def api
+  def api 
     hash = {}
     marcadores = Bookmark.all
     categorias = Category.all
@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
         type_id: bookmark.type_id,
         category_id: bookmark.category_id,
         categories: bookmark.category
-      } 
+      }
       array_bookmark.push(objeto)
     end
     hash["Marcadores"] = array_bookmark
@@ -61,13 +61,13 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        format.js
         format.html { redirect_to @category, notice: "Category was successfully created." }
         format.json { render :show, status: :created, location: @category }
-        format.js 
       else
+        format.js {render :new}
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @category.errors, status: :unprocessable_entity }
-        format.js { render :new }
       end
     end
   end
@@ -83,15 +83,14 @@ class CategoriesController < ApplicationController
             child.save
           end
         end
-
-
+        
+        format.js
         format.html { redirect_to @category, notice: "Category was successfully updated." }
         format.json { render :show, status: :ok, location: @category }
-        format.js 
       else
+        format.js {render :edit}
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @category.errors, status: :unprocessable_entity }
-        format.js {render :edit}
       end
     end
   end
@@ -100,9 +99,9 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
+      format.js
       format.html { redirect_to categories_url, notice: "Category was successfully destroyed." }
       format.json { head :no_content }
-      format.js
     end
   end
 

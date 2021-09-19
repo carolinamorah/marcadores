@@ -5,31 +5,36 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'faker'
 
 
+Bookmark.destroy_all
 Type.destroy_all
 Category.destroy_all
 
 status_array = [true, false]
 
 20.times do Category.create(
-    name: Faker::Beer.brand,
+    name: Faker::Company.industry,
     status: status_array.sample()
-)
+    )
+end
+
+10.times do 
+    Category.find(rand(1..11)).update(category_id: rand(12..20))
 end
 
 5.times do  
-    Type.create(
-        name: Faker::Beer.style
-    )
+    Type.create(name: Faker::Company.profession)
 end
+
 
 20.times do 
     Bookmark.create(
-    name: Faker::Beer.name,
+    name: Faker::Company.name,
     url: Faker::Internet.url,
     category_id: rand(1..10),
     type_id: rand(1..5)
-    )
+)
 end 

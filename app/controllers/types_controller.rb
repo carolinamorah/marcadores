@@ -26,13 +26,13 @@ class TypesController < ApplicationController
 
     respond_to do |format|
       if @type.save
+        format.js
         format.html { redirect_to @type, notice: "Type was successfully created." }
         format.json { render :show, status: :created, location: @type }
-        format.js
       else
+        format.js {render :new}
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @type.errors, status: :unprocessable_entity }
-        format.js { render :new }
       end
     end
   end
@@ -41,13 +41,13 @@ class TypesController < ApplicationController
   def update
     respond_to do |format|
       if @type.update(type_params)
+        format.js
         format.html { redirect_to @type, notice: "Type was successfully updated." }
         format.json { render :show, status: :ok, location: @type }
-        format.js 
       else
+        format.js {render :edit}
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @type.errors, status: :unprocessable_entity }
-        format.js { render :edit }
       end
     end
   end
@@ -56,9 +56,9 @@ class TypesController < ApplicationController
   def destroy
     @type.destroy
     respond_to do |format|
+      format.js
       format.html { redirect_to types_url, notice: "Type was successfully destroyed." }
       format.json { head :no_content }
-      format.js
     end
   end
 
